@@ -1,0 +1,30 @@
+{
+    "name": "latexq",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "context": ".."
+    },
+    "workspaceMount": "source=${localWorkspaceFolder},target=/workspaces/latexq,type=bind,consistency=cached",
+    "workspaceFolder": "/workspaces/latexq",
+    "runArgs": [
+        "--cap-add=SYS_PTRACE",
+        "--hostname",
+        "latexq"
+    ],
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-python.python",
+                "ms-python.vscode-pylance",
+                "ms-python.mypy-type-checker",
+                "charliermarsh.ruff",
+                "github.copilot",
+                "github.copilot-chat"
+            ],
+            "settings": {
+                "python.defaultInterpreterPath": "/opt/venv/bin/python",
+                "python.terminal.activateEnvironment": false
+            }
+        }
+    }
+}

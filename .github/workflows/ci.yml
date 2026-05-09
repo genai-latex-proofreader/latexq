@@ -1,0 +1,61 @@
+name: latexq CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  ci:
+    name: CI
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+
+    steps:
+      - name: Check out repository
+        # https://github.com/actions/checkout/
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd  # v6.0.2
+
+      - name: Set up Python
+        # https://github.com/actions/setup-python
+        uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405  # v6.2.0
+        with:
+          python-version: '3.12'
+
+      - name: Set up uv
+        # https://github.com/astral-sh/setup-uv
+        uses: astral-sh/setup-uv@v8.1.0  # immutable release
+        with:
+          version: '0.11.6'
+          enable-cache: true
+          cache-dependency-glob: uv.lock
+
+      - name: Validate dependency lockfile
+        run: make uv-check
+
+      - name: Run pip-audit security checks
+        run: make audit-check
+
+      - name: Run Ruff lint checks
+        run: make ruff-check
+
+      - name: Run Mypy type checks
+        run: make mypy-check
+
+      - name: Run test suite
+        run: make test
+
+      - name: Test latexq on some sample papers downloaded from arXiv
+        run: make test-e2e
+
+      - name: Build distribution packages
+        run: make package

@@ -1,0 +1,74 @@
+[build-system]
+requires = ["hatchling==1.29.0"]
+build-backend = "hatchling.build"
+
+[project]
+name = "latexq"
+dynamic = ["version"]
+description = "latexq is an experimental CLI for context management in LaTeX manuscripts"
+readme = "README.md"
+requires-python = ">=3.12"
+authors = [
+    { name = "Matias Dahl" }
+]
+keywords = [
+    "latex",
+    "query",
+    "cli",
+    "proofreading",
+    "AI",
+]
+classifiers = [
+    "Environment :: Console",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Text Processing :: Markup :: LaTeX"
+]
+dependencies = [
+    "pydantic==2.12.5",
+    "pyyaml==6.0.2"
+]
+
+[tool.hatch.version]
+path = "src/lq/__init__.py"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/lq"]
+
+[project.optional-dependencies]
+dev = [
+    # match version of https://marketplace.visualstudio.com/items?itemName=ms-python.mypy-type-checker
+    "mypy==1.15.0",
+    "py-spy==0.4.2",
+    "pip-audit==2.9.0",
+    "pre-commit==4.3.0",
+    # match version of https://marketplace.visualstudio.com/items?itemName=charliermarsh.ruff
+    "ruff==0.15.10",
+    "pytest==9.0.3",
+    "types-PyYAML==6.0.12.20250915"
+]
+
+[project.scripts]
+lq = "lq.main:cli"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-m 'not e2e'"
+cache_dir = "$HOME/.cache/latexq/pytest"
+markers = [
+    "e2e: Test latexq on some sample papers downloaded from arXiv",
+]
+
+[tool.ruff]
+cache-dir = "$HOME/.cache/latexq/ruff"
+
+[tool.ruff.lint]
+ignore = ["E731"]
+
+[tool.mypy]
+files = ["src/", "tests/"]
+cache_dir = "$HOME/.cache/latexq/mypy"
+strict = false
+warn_return_any = true
+warn_unused_configs = true

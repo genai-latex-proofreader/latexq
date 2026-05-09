@@ -1,0 +1,39 @@
+{
+    // --- Editor settings ---
+    "editor.rulers": [
+        88
+    ],
+    "editor.formatOnSave": true,
+    "editor.cursorStyle": "block",
+    "editor.renderWhitespace": "all",
+    "editor.renderLineHighlight": "all",
+    "workbench.colorTheme": "Default Dark+",
+    "workbench.colorCustomizations": {
+        "editorWhitespace.foreground": "#44d5eb86",
+        "list.inactiveSelectionBackground": "#405f7e",
+        "editorCursor.foreground": "#ffe100",
+        "editor.lineHighlightBackground": "#2c4258"
+    },
+    // --- Silence IDE ---
+    "workbench.startupEditor": "none",
+    "workbench.tips.enabled": false,
+    "zenMode.silentNotifications": true,
+    // --- Python setup ---
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true,
+    "python.analysis.extraPaths": [
+        "src"
+    ],
+    "python.analysis.typeCheckingMode": "basic",
+    "[python]": {
+        "editor.defaultFormatter": "charliermarsh.ruff",
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": "explicit"
+        }
+    },
+    "[markdown]": {
+        "editor.wordWrap": "wordWrapColumn",
+        "editor.wordWrapColumn": 88,
+        "editor.wrappingIndent": "indent"
+    }
+}
