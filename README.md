@@ -29,14 +29,10 @@ For the full supported subset and parser constraints, see [docs/latex-subset.md]
 
 #### 📦 Installation
 
-```bash
-$ python -m pip install git+https://github.com/genai-latex-proofreader/latexq.git
-```
-
-From a local checkout:
+`latexq` is available as a [pypi](https://pypi.org/project/latexq/) package:
 
 ```bash
-$ python -m pip install .
+$ pip install latexq   # or pip3 install latexq
 ```
 
 #### Example command to extract one section
