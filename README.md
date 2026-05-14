@@ -86,12 +86,14 @@ Specifications:
 
 Instructions for developing `latexq` can be found in [docs/development.md](docs/development.md).
 
+Feedback and ideas is welcome.
+
 ## ⚖️ License
 
-Copyright 2024-2026 Matias Dahl. All rights reserved.
+Copyright 2024-2026 Matias Dahl and contributors.
+`latexq` is released under the [MIT License](https://opensource.org/license/mit), see [LICENSE.md](LICENSE.md).
 
-Most of `latexq` (both code and documentation) has been generated with AI and should be considered experimental.
-Feedback, ideas and contributions are welcome.
+Large parts of `latexq` (both code and documentation) have been created with the assistance of AI-powered tools.
 
 An earlier version of this work is
 https://github.com/genai-latex-proofreader/genai-latex-proofreader
