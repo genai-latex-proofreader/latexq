@@ -45,3 +45,7 @@ Available commands:
 ```
 
 Many of these commands are run automatically in the CI pipeline.
+
+## Release pipeline
+
+The repository includes a GitHub Actions workflow at `.github/workflows/release.yml` that publishes `latexq` to PyPI when a version tag is pushed.
